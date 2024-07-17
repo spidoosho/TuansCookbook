@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from "./components/navbar"
 function RecipeApp() {
-    const [recipes, setRecipes] = useState();
+    const [recipes, setRecipes] = useState(0);
 
     useEffect(() => {
         populateRecipeData();
