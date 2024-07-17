@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import MyNavbar from "./components/navbar"
+
+import RouterApp from "./components/router"
 import MainApp from "./main"
-import { BrowserRouter } from 'react-router-dom'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter>
-            <MyNavbar />
+        <RouterApp>
             <MainApp />
-        </BrowserRouter>
+        </RouterApp>
     </React.StrictMode>
 );
