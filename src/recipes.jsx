@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { DynamoDBClient, ScanCommand } from '@aws-sdk/client-dynamodb'
+import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from "./components/navbar"
 
@@ -12,38 +14,42 @@ function RecipeApp() {
     async function fetchData() {
       await populateRecipeData();
     }
-    if(recipes === 0) {
+    if (recipes === 0) {
       fetchData();
-      console.log(JSON.stringify(recipes))
     }
   }, []);
 
   const contents = recipes === 0 ? <Row> Please wait until data is loaded </Row> :
-  <Row>
-  {recipes.map(recipe =>
-      <div key={recipe.Name.S}>
-          <h2>{recipe.Name.S}</h2>
-          <h4>Ingredients</h4>
-          {recipe.Ingredients.SS.map(ingredient =>
-              <ul key={ingredient}>
-                  <li>{ingredient}</li>
-              </ul>
-          )}
-          <h4>Steps</h4>
-          {recipe.Steps.SS.map(step =>
-              <ul key={step}>
-                  <li>{step}</li>
-              </ul>
-          )}
-
-      </div>
-  )}
-</Row>
+    <div>
+      {recipes.map(recipe =>
+        <div key={recipe.Name.S}>
+          <h1>{recipe.Name.S}</h1>
+          <Row>
+            <Col sm={6}>
+              <h5>Ingredients</h5>
+              <ListGroup>
+                {recipe.Ingredients.SS.map(ingredient =>
+                  <ListGroup.Item key={ingredient}>{ingredient}</ListGroup.Item>
+                )}
+              </ListGroup>
+            </Col>
+            <Col sm={6}>
+              <h5>Steps</h5>
+              <ListGroup>
+                {recipe.Steps.SS.map(step =>
+                  <ListGroup.Item key={step}>{step}</ListGroup.Item>
+                )}
+              </ListGroup>
+            </Col>
+          </Row>
+          <hr />
+        </div>
+      )}
+    </div>
 
   return (
     <Container>
       <MyNavbar />
-      <h1 id="tableLabel">All recipes</h1>
       {contents}
     </Container>
   );
