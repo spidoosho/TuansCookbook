@@ -1,8 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import MainApp from "../main"
-import FilterApp from "../filter"
-import RecipeApp from "../recipes"
+import RecipeApp from '../recipe';
 
 const router = createBrowserRouter([
     {
@@ -10,12 +9,8 @@ const router = createBrowserRouter([
         element: <MainApp />,
     },
     {
-        path: "/filter",
-        element: <FilterApp />,
-    },
-    {
-        path: "/recipes",
-        element: <RecipeApp />,
+        path: "/recipe/:name",
+        element: <RecipeApp />
     }
 ]);
 
