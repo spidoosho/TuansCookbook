@@ -6,19 +6,39 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from "./components/navbar"
 
 function RecipeApp() {
-  const [data, setData] = useState(0);
+  const [recipes, setData] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
       await populateRecipeData();
     }
-    fetchData(); 
+    if(recipes === 0) {
+      fetchData();
+      console.log(JSON.stringify(recipes))
+    }
   }, []);
 
-  const contents = data === undefined ? <Row> undefined </Row> :
-    <Row>
-      Nazev: {data.Name}
-    </Row>
+  const contents = recipes === 0 ? <Row> Please wait until data is loaded </Row> :
+  <Row>
+  {recipes.map(recipe =>
+      <div key={recipe.Name.S}>
+          <h2>{recipe.Name.S}</h2>
+          <h4>Ingredients</h4>
+          {recipe.Ingredients.SS.map(ingredient =>
+              <ul key={ingredient}>
+                  <li>{ingredient}</li>
+              </ul>
+          )}
+          <h4>Steps</h4>
+          {recipe.Steps.SS.map(step =>
+              <ul key={step}>
+                  <li>{step}</li>
+              </ul>
+          )}
+
+      </div>
+  )}
+</Row>
 
   return (
     <Container>
@@ -30,7 +50,8 @@ function RecipeApp() {
 
   async function populateRecipeData() {
     const dbclient = new DynamoDBClient({ region: import.meta.env.VITE_DYNAMODB_REGION, credentials: { accessKeyId: import.meta.env.VITE_DYNAMODB_ACCESS_KEY_ID, secretAccessKey: import.meta.env.VITE_DYNAMODB_SECRET_ACCESS_KEY } })
-    const response = await getRecipes(dbclient)
+    let response = []
+    response = await getRecipes(dbclient)
     setData(response);
   }
 
@@ -41,7 +62,7 @@ function RecipeApp() {
 
     while (scan.LastEvaluatedKey !== undefined) {
       scan.Items.forEach(function (item,) {
-        return item
+        recipes.push(item)
       })
 
       input.ExclusiveStartKey = scan.LastEvaluatedKey
@@ -50,7 +71,7 @@ function RecipeApp() {
 
     if (scan.Items !== undefined) {
       scan.Items.forEach(function (item,) {
-        return item
+        recipes.push(item)
       })
     }
 
