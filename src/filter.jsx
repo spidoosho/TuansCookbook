@@ -1,8 +1,8 @@
 import MyNavbar from "./components/navbar"
 import Container from 'react-bootstrap/Container';
 
-function MainApp() {
-    const contents = <h1>Main App</h1>
+function FilterApp() {
+    const contents = <h1>TO BE DONE</h1>
 
     return (
         <Container>
@@ -12,4 +12,4 @@ function MainApp() {
     );
 }
 
-export default MainApp;
+export default FilterApp;
