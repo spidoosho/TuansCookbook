@@ -80,8 +80,4 @@ const SearchableDropdown = ({
   );
 };
 
-
-function submitHandler(e) {
-    e.preventDefault();
-}
 export default SearchableDropdown;

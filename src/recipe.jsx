@@ -1,6 +1,6 @@
 import { DynamoDBClient, GetItemCommand } from '@aws-sdk/client-dynamodb'
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,8 +11,7 @@ import MyNavbar from "./components/navbar"
 
 function RecipeApp() {
     const [recipe, setRecipe] = useState(undefined);
-    const {state} = useLocation();
-    const { name } = state;
+    const { name } = useParams();
 
     useEffect(() => {
         async function fetchData() {

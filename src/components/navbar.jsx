@@ -58,14 +58,14 @@ function MyNavbar() {
     e.preventDefault();
     for (const recipe of recipes) {
       if (recipe.name.toLowerCase().includes(e.target[0].value.toLowerCase())) {
-        navigate(`/recipe/${recipe.name}`, { state: {name: recipe.name} })
+        navigate(`/recipe/${recipe.name}`)
       }
     }
   }
 
   function selectHandler(e) {
     if (e.target.classList.length > 0) {
-      navigate(`/recipe/${e.target.innerHTML}`, { state: {name: e.target.innerHTML} })
+      navigate(`/recipe/${e.target.innerHTML}`)
     }
   }
   async function populateDropDownData() {
