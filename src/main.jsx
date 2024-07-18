@@ -16,6 +16,7 @@ function MainApp() {
     if (recipes === 0) {
       fetchData();
     }
+
   }, []);
 
   const contents = recipes === 0 ? <Row> Please wait until data is loaded </Row> :
@@ -35,8 +36,8 @@ function MainApp() {
             <Col sm={6}>
               <h5>Steps</h5>
               <ListGroup numbered>
-                {recipe.Steps.SS.map(step =>
-                  <ListGroup.Item key={step}>{step}</ListGroup.Item>
+                {recipe.Steps.L.sort().map((ingredient, i) =>
+                  <ListGroup.Item key={i}>{ingredient.S}</ListGroup.Item>
                 )}
               </ListGroup>
             </Col>

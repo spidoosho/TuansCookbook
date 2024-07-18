@@ -38,8 +38,8 @@ function RecipeApp() {
             <Col sm={6}>
                 <h5>Steps</h5>
                 <ListGroup numbered>
-                    {recipe.Steps.SS.map(step =>
-                        <ListGroup.Item key={step}>{step}</ListGroup.Item>
+                    {recipe.Steps.L.map((step, i) =>
+                        <ListGroup.Item key={i}>{step.S}</ListGroup.Item>
                     )}
                 </ListGroup>
             </Col>
