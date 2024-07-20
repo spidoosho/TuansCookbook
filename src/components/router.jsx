@@ -9,12 +9,17 @@ const router = createBrowserRouter([
         element: <MainApp />,
     },
     {
-        path: "/recipe/:name",
-        element: <RecipeApp />
+        path: "/recipe",
+        children: [
+            {
+                path: ":name",
+                element: <RecipeApp />
+            }
+        ]
     }
 ]);
 
-function RouterApp() { 
+function RouterApp() {
     return <RouterProvider router={router} />;
 }
 
