@@ -17,10 +17,10 @@ function RecipeApp() {
         async function fetchData() {
             await populateRecipeData(name);
         }
-        if (recipe === undefined) {
+        if (recipe === undefined || recipe.Name.S !== name) {
             fetchData();
-        }
-    }, [name]);
+        } 
+    }, [name, recipe]);
 
     const contents = recipe === undefined ? <Row>Wait for data to load</Row> :
     <div key={recipe.Name.S}>

@@ -56,9 +56,11 @@ function MyNavbar() {
 
   function submitHandler(e) {
     e.preventDefault();
-    for (const recipe of recipes) {
-      if (recipe.name.toLowerCase().includes(e.target[0].value.toLowerCase())) {
-        navigate(`/recipe/${recipe.name}`)
+    let found = false;
+    for (let i = 0; i < recipes.length && !found; i++) {
+      if (recipes[i].name.toLowerCase().includes(e.target[0].value.toLowerCase())) {
+        found = true;
+        navigate(`/recipe/${recipes[i].name}`)
       }
     }
   }
