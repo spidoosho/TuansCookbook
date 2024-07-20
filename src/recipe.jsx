@@ -12,7 +12,7 @@ import MyNavbar from "./components/navbar"
 function RecipeApp() {
     const [recipe, setRecipe] = useState(undefined);
     const { name } = useParams();
-    
+
     useEffect(() => {
         async function fetchData() {
             await populateRecipeData(name);
@@ -20,7 +20,7 @@ function RecipeApp() {
         if (recipe === undefined) {
             fetchData();
         }
-    }, [name, populateRecipeData, recipe]);
+    }, [name]);
 
     const contents = recipe === undefined ? <Row>Wait for data to load</Row> :
     <div key={recipe.Name.S}>
