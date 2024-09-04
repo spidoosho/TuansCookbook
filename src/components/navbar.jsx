@@ -48,6 +48,7 @@ function MyNavbar() {
               </Row>
             </Form>
             <Nav.Link as={Link} to={'/'}>Show All Recipes</Nav.Link>
+            <Nav.Link as={Link} to={'/add'}>Add Recipe</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
