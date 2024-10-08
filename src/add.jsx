@@ -105,6 +105,9 @@ function AddRecipeApp() {
 
   async function CreateRecipe(event) {
     event.preventDefault();
+    alert(`Code: ${import.meta.env.VITE_CODE}`);
+    console.log(`Code: ${import.meta.env.VITE_CODE}`);
+
     if (
       event.target[event.target.length - 2].value !== import.meta.env.VITE_CODE
     ) {
