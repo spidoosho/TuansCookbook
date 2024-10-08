@@ -1,4 +1,5 @@
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import Row from "react-bootstrap/Row";
@@ -13,6 +14,7 @@ import MyNavbar from "./components/navbar";
 function AddRecipeApp() {
   const [ingredients, setIngredients] = useState([""]);
   const [steps, setSteps] = useState([""]);
+  const navigate = useNavigate();
 
   const handleIngredientsChange = (index, event) => {
     let data = [...ingredients];
@@ -105,8 +107,6 @@ function AddRecipeApp() {
 
   async function CreateRecipe(event) {
     event.preventDefault();
-    alert(`Code: ${import.meta.env.VITE_CODE}`);
-    console.log(`Code: ${import.meta.env.VITE_CODE}`);
 
     if (
       event.target[event.target.length - 2].value !== import.meta.env.VITE_CODE
@@ -177,6 +177,8 @@ function AddRecipeApp() {
     };
 
     await dbclient.send(new PutItemCommand(input));
+
+    navigate(`/recipe/${recipe}`);
   }
 }
 
