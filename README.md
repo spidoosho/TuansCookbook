@@ -1,8 +1,9 @@
-# React + Vite
+# Tuan's cookbook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> <div style="text-align: center;"><a href="https://tuans-cookbook.vercel.app">https://tuans-cookbook.vercel.app</a></div> 
 
-Currently, two official plugins are available:
+Browse and enjoy my recipes on my website hosted on [Vercel](https://tuans-cookbook.vercel.app/)!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+If you guess my secret, then you can add your recipe :p
+
+Used [React.js](https://react.dev/) + [Vite](https://vite.dev/).
