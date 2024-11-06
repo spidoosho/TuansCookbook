@@ -19,7 +19,7 @@ function AddRecipeApp() {
   const handleIngredientsChange = (index, event) => {
     let data = [...ingredients];
     data[index] = event.target.value;
-    if (index == data.length - 1) {
+    if (index === data.length - 1) {
       data.push("");
     }
     setIngredients(data);
@@ -28,7 +28,7 @@ function AddRecipeApp() {
   const handleStepsChange = (index, event) => {
     let data = [...steps];
     data[index] = event.target.value;
-    if (index == data.length - 1) {
+    if (index === data.length - 1) {
       data.push("");
     }
     setSteps(data);
@@ -51,6 +51,7 @@ function AddRecipeApp() {
                   <div key={index}>
                     <Form.Control
                       type="text"
+                      autoComplete="off"
                       placeholder="Add ingredient"
                       onChange={(event) =>
                         handleIngredientsChange(index, event)
@@ -69,6 +70,7 @@ function AddRecipeApp() {
                   <div key={index}>
                     <Form.Control
                       type="text"
+                      autoComplete="off"
                       placeholder="Add step"
                       onChange={(event) => handleStepsChange(index, event)}
                     />
@@ -115,7 +117,7 @@ function AddRecipeApp() {
       return;
     }
 
-    const dbclient = new DynamoDBClient({
+    const dbClient = new DynamoDBClient({
       region: import.meta.env.VITE_DYNAMODB_REGION,
       credentials: {
         accessKeyId: import.meta.env.VITE_DYNAMODB_ACCESS_KEY_ID,
@@ -129,21 +131,21 @@ function AddRecipeApp() {
     let i = 0;
 
     if (event.target[i].id === "Recipe") {
-      if (event.target[i].value.trim().length != 0) {
+      if (event.target[i].value.trim().length !== 0) {
         recipe = event.target[0].value;
       }
       i += 1;
     }
 
     while (event.target[i].id === "Ingredients") {
-      if (event.target[i].value.trim().length != 0) {
+      if (event.target[i].value.trim().length !== 0) {
         ingredientsArr.push(event.target[i].value);
       }
       i += 1;
     }
 
     while (event.target[i].id === "Steps") {
-      if (event.target[i].value.trim().length != 0) {
+      if (event.target[i].value.trim().length !== 0) {
         console.log(event.target[i].value.trim().length);
         stepsArr.push({
           S: event.target[i].value,
@@ -176,7 +178,7 @@ function AddRecipeApp() {
       },
     };
 
-    await dbclient.send(new PutItemCommand(input));
+    await dbClient.send(new PutItemCommand(input));
 
     navigate(`/recipe/${recipe}`);
   }
