@@ -1,6 +1,6 @@
 # Tuan's cookbook
 
-> <div style="text-align: center;"><a href="https://tuans-cookbook.vercel.app">https://tuans-cookbook.vercel.app</a></div> 
+> https://tuans-cookbook.vercel.app
 
 Browse and enjoy my recipes on my website hosted on [Vercel](https://tuans-cookbook.vercel.app/)!
 
