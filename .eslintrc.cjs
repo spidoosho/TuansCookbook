@@ -10,6 +10,12 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
+  overrides: [
+    {
+      files: ['api/**/*.js', 'vite.config.js'],
+      env: { node: true, browser: false },
+    },
+  ],
   plugins: ['react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
