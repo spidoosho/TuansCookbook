@@ -1,13 +1,12 @@
 import "./styles.css";
 
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
 
-import RouterApp from "./components/router"
-import MainApp from './main';
+import RouterApp from "./components/router";
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterApp>
-        <MainApp />
-    </RouterApp>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <RouterApp />
+  </StrictMode>
 );
